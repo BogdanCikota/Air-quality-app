@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 
-export const GlobalContext = createContext();
+export const GlobalContext = createContext( undefined as any );
 
-const GlobalContextProvider = (props) => {
+const GlobalContextProvider = ({children}: {children:ReactNode}) => {
     const [url, setUrl] = useState('feed/here/?');
     const [searchValue, setSearchValue] = useState('');
     const [myLocation, setMyLocation] = useState('');
@@ -26,7 +26,7 @@ const GlobalContextProvider = (props) => {
                 setTime
             }
             }>
-            {props.children}
+            {children}
         </GlobalContext.Provider>
     );
 }
